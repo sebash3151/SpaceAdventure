@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Walker : MonoBehaviour
 {
-    public Vector2 thisPosition, velocidad, aceleracion, ubicacionActual;
-    [SerializeField] float  rapidezlimite = 5f;
-    [SerializeField] Vector2 objetivo = new Vector2();
-    [SerializeField] public Transform objetivotrans;
+    private Vector2 thisPosition, ubicacionActual;
+    public Vector2 velocidad, aceleracion;
+    [SerializeField] float rapidezlimite = 5f;
+    Vector2 objetivo = new Vector2();
+    public Transform objetivotrans;
+    public bool acelerate = false;
 
     private void Start()
     {
@@ -25,7 +27,10 @@ public class Walker : MonoBehaviour
     {
         ubicacionActual = new Vector2(this.transform.position.x, this.transform.position.y);
 
-        aceleracion = objetivo - ubicacionActual;
+        if (acelerate)
+        {
+            aceleracion = objetivo - ubicacionActual;
+        }
 
         velocidad += aceleracion * (Time.deltaTime);
 
@@ -34,7 +39,7 @@ public class Walker : MonoBehaviour
             var velocidadNormalizada = velocidad.normalized;
             velocidad = velocidadNormalizada * (rapidezlimite);
         }
-        thisPosition += (velocidad * (Time.deltaTime));        
+        thisPosition += (velocidad * (Time.deltaTime));
     }
 
     private void HallarObjetivo()

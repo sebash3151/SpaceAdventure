@@ -13,9 +13,9 @@ public class ChangeGravity : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("entro");
         if (collision.CompareTag("planet"))
         {
+            walker.acelerate = true;
             Transform trans = collision.transform;
             walker.objetivotrans = trans;
         }

@@ -4,50 +4,34 @@ using UnityEngine;
 
 public class MyCustomLookAt : MonoBehaviour
 {
-    [SerializeField] Color color;
     Vector2 thisPosicion;
-    [SerializeField] float speed = 5f;
     Vector2 observar;
-    [SerializeField] bool observacion = false;
-    [SerializeField] bool moverseSinAcelerar = false;
-    Vector2 velocity = new Vector2(0, 0);
+    [SerializeField] public bool observacion = true;
+    Walker walker;
 
-    [Header("Acelerar")]
-    [SerializeField] bool moverseConAcelerar = false;
-    [SerializeField] Vector2 aceleracion;
     Vector2 mousePosition;
+
+    private void Start()
+    {
+        walker = GetComponent<Walker>();
+    }
 
     void Update()
     {
         thisPosicion = transform.position;
         mousePosition = GetWorldMousePosition();
-        ObservarA();
-        Impulso();
-        ImpulsoAcelerado();
+        Observar();
     }
 
-    private void Impulso()
+    private void Observar()
     {
-        if (moverseSinAcelerar)
+        if (observacion)
         {
-            observar = mousePosition - thisPosicion;
-            observar.Normalize();
-            Vector2 velocity = observar * speed;
-            Vector3 finalPosition = new Vector3(velocity.x, velocity.y, 0);
-            RotateZ(LookAtOMG(velocity)); 
-            transform.position += finalPosition * Time.deltaTime;
+            RotateZ(LookAtOMG(mousePosition - thisPosicion));
         }
-    }
-    private void ImpulsoAcelerado()
-    {
-        if (moverseConAcelerar)
+        else
         {
-            aceleracion = mousePosition - thisPosicion;
-            velocity += (aceleracion * Time.deltaTime);
-            Vector3 finalPosition = new Vector3(velocity.x, velocity.y, 0);
-
-            RotateZ(LookAtOMG(velocity));
-            transform.position += (finalPosition * Time.deltaTime);
+            RotateZ(LookAtOMG(walker.velocidad));
         }
     }
 
@@ -71,11 +55,4 @@ public class MyCustomLookAt : MonoBehaviour
         transform.rotation = Quaternion.Euler(0.0f, 0.0f, radians * Mathf.Rad2Deg);
     }
 
-    private void ObservarA()
-    {
-        if (observacion)
-        {
-            RotateZ(LookAtOMG(mousePosition - thisPosicion));
-        }
-    }
 }
