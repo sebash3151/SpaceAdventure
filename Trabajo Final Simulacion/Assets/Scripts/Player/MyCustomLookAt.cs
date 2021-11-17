@@ -13,7 +13,6 @@ public class MyCustomLookAt : MonoBehaviour
 
     private void Start()
     {
-        observacion = true;
         walker = GetComponent<Walker>();
     }
 

@@ -27,7 +27,6 @@ public class FirstImpulse : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(walker.velocidad.magnitude);
         flecha.transform.position = player.transform.position + new Vector3(1f, 1f, 0f);
         if (gameManager.preparation)
         {

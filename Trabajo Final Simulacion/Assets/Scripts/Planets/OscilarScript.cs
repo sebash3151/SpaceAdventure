@@ -14,14 +14,24 @@ public class OscilarScript : MonoBehaviour
     [SerializeField] [Range(0, 3)] float periodoY;
     float y;
 
+    [Header("CheckBoxes")]
+    [SerializeField] bool aleatorizar = false;
+    [SerializeField] bool oscilar = false;
+
     private void Start()
     {
-        Aleatorizador();
+        if (aleatorizar)
+        {
+            Aleatorizador();
+        }
     }
 
     void Update()
     {
-        Oscilador();       
+        if (oscilar)
+        {
+            Oscilador();
+        }    
     }
 
     private void Oscilador()
@@ -36,15 +46,15 @@ public class OscilarScript : MonoBehaviour
             float factorY = Time.time / periodoY;
             y = amplitudY * Mathf.Sin(2 * Mathf.PI * factorY);
         }
-        transform.position = new Vector3(x, y, transform.position.z);
+        transform.position = new Vector3(x + transform.position.x, y + transform.position.y, transform.position.z);
     }
 
     private void Aleatorizador()
     {
-        amplitudX = Random.Range(0f, 4f);
-        amplitudY = Random.Range(0f, 4f);
-        periodoY = Random.Range(0f, 4f);
-        periodoX = Random.Range(0f, 4f);
+        amplitudX = Random.Range(0f, 2f);
+        amplitudY = Random.Range(0f, 2f);
+        periodoY = Random.Range(0f, 2f);
+        periodoX = Random.Range(0f, 2f);
     }
 
 }
