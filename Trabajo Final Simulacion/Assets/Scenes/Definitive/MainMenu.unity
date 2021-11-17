@@ -2565,7 +2565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objetos:
   - {fileID: 8250993391317478529, guid: ac02a6bc9dbe31d48b56c7dd89a49110, type: 3}
-  - {fileID: 8529147225648326161, guid: 08604f18f8c71bd4ea66742128eb4fe9, type: 3}
+  - {fileID: 586779565079142915, guid: 4584435f78f8d2e419c64a132374afcc, type: 3}
   - {fileID: 3129831029790430131, guid: 740a35d2862497a4ba05771a1c27b266, type: 3}
   minimunSpawnTime: 3
   maximunSpawnTime: 8
@@ -2749,7 +2749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e17a3dfa4810b34496f383303933ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: SampleScene
+  sceneName: Level1
   click: {fileID: 8300000, guid: 6240119463da2f744b0f4d41d9330f23, type: 3}
   back: {fileID: 8300000, guid: 613b6d082f1398a49b419acefc62c6ac, type: 3}
   bye: {fileID: 8300000, guid: 441f491fff2f08f4bac6ba747995a8c6, type: 3}
