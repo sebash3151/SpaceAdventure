@@ -18,6 +18,11 @@ public class ChangeGravity : MonoBehaviour
             walker.acelerate = true;
             Transform trans = collision.transform;
             walker.objetivotrans = trans;
+            AudioSource audio = collision.GetComponent<AudioSource>();
+            if (!audio.isPlaying)
+            {
+                audio.Play();
+            }
         }
     }
 }

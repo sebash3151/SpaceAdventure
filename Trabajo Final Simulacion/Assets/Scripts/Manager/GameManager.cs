@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject player;
-    public bool preparation = true, playing = false;
+    public bool preparation = false, playing = false, win = false;
 
     MyCustomLookAt playerLook;
     Walker walker;
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (preparation && Input.GetButtonDown("Fire1"))
         {
             GameStart();
         }

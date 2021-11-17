@@ -5,9 +5,9 @@ using UnityEngine;
 public class MusicManager : MonoBehaviour
 {
     GameManager manager;
-    [SerializeField] AudioClip clip;
+    [SerializeField] AudioClip clipLevel, clipWin;
     AudioSource audio;
-    private int i = 0;
+    private int i = 0, j = 0;
 
     private void Awake()
     {
@@ -21,9 +21,18 @@ public class MusicManager : MonoBehaviour
         {
             if (i == 0)
             {
-                audio.clip = clip;
+                audio.clip = clipLevel;
                 audio.Play();
                 i++;
+            }
+        }
+        if (manager.win)
+        {
+            if (j == 0)
+            {
+                audio.clip = clipWin;
+                audio.Play();
+                j++;
             }
         }
     }

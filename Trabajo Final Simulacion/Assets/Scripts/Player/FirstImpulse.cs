@@ -8,15 +8,18 @@ public class FirstImpulse : MonoBehaviour
     [SerializeField] GameObject flecha;
     [SerializeField] GameObject player;
     [SerializeField] float indiceDesacelere;
-    [SerializeField] bool desacelere;
+    bool desacelere;
     Walker walker;
     Vector2 mousePosition;
     Vector2 thisPosicion;
     Vector2 posicionALanzar;
     WaterFriction friction;
+    AudioSource audio;
+    bool sonido = false;
 
     private void Start()
     {
+        audio = GetComponent<AudioSource>();
         friction = player.GetComponent<WaterFriction>();
         flecha.transform.position = player.transform.position + new Vector3(1f, 1f, 0f);
         walker = player.GetComponent<Walker>();
@@ -28,9 +31,16 @@ public class FirstImpulse : MonoBehaviour
         {
             flecha.SetActive(true);
             Apuntar();
+            sonido = false;
         }
         else if (gameManager.playing)
         {
+            if (!sonido)
+            {
+                audio.Play();
+                sonido = true;
+            }
+
             flecha.SetActive(false);
             ImpulsoInicial();
             LoseVelocity();
