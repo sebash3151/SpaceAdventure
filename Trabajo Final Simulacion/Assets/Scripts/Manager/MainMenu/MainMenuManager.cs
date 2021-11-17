@@ -52,4 +52,20 @@ public class MainMenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
+    public void Level1()
+    {
+        sceneName = "Level1";
+        StartGame();
+    }
+    public void Level2()
+    {
+        sceneName = "Level2";
+        StartGame();
+    }
+    public void Level3()
+    {
+        sceneName = "Level3";
+        StartGame();
+    }
 }
