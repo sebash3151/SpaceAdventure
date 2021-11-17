@@ -8,7 +8,6 @@ public class FirstImpulse : MonoBehaviour
     [SerializeField] GameObject flecha;
     [SerializeField] GameObject player;
     [SerializeField] float indiceDesacelere;
-    [SerializeField] float impulsoFuerza = 5f;
     bool desacelere;
     Walker walker;
     Vector2 mousePosition;
@@ -17,6 +16,7 @@ public class FirstImpulse : MonoBehaviour
     WaterFriction friction;
     AudioSource audio;
     bool sonido = false;
+    Vector2 impulso;
 
     private void Start()
     {
@@ -27,9 +27,11 @@ public class FirstImpulse : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(walker.velocidad.magnitude);
         flecha.transform.position = player.transform.position + new Vector3(1f, 1f, 0f);
         if (gameManager.preparation)
         {
+            walker.acelerate = false;
             flecha.SetActive(true);
             Apuntar();
             sonido = false;
@@ -52,14 +54,8 @@ public class FirstImpulse : MonoBehaviour
     {        
         if (!walker.acelerate && !friction.fluidoEnter && !desacelere)
         {
-            Vector2 impulso = posicionALanzar * impulsoFuerza;
+            impulso = posicionALanzar;
 
-            if (impulso.magnitude >= 15)
-            {
-                impulso.Normalize();
-                impulso *= 4 * impulsoFuerza;
-            }
-            Debug.Log(impulso.magnitude);
             walker.velocidad = impulso;
             desacelere = true;
         }
@@ -69,15 +65,7 @@ public class FirstImpulse : MonoBehaviour
     {
         if(!walker.acelerate && !friction.fluidoEnter && desacelere)
         {
-            walker.velocidad = walker.velocidad - new Vector2(indiceDesacelere * Time.deltaTime, indiceDesacelere * Time.deltaTime);
-            if (walker.velocidad.x <= 0)
-            {
-                walker.velocidad.x = 0;
-            }
-            if (walker.velocidad.y <= 0)
-            {
-                walker.velocidad.y = 0;
-            }
+            walker.velocidad = walker.velocidad - walker.velocidad.normalized * indiceDesacelere;
         }
     }
 
