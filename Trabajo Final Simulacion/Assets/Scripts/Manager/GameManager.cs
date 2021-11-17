@@ -31,4 +31,12 @@ public class GameManager : MonoBehaviour
         playerLook.observacion = false;
         walker.enabled = true;
     }
+
+    public void Preparate()
+    {
+        preparation = true;
+        playing = false;
+        walker.enabled = false;
+        playerLook.observacion = true;
+    }
 }

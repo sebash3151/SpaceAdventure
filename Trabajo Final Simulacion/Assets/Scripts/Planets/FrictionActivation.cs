@@ -5,11 +5,13 @@ using UnityEngine;
 public class FrictionActivation : MonoBehaviour
 {
     [SerializeField] [Range(0, 1)] int OFriccion1AceleracionLocal;
-    [SerializeField] Sprite[] sprites;
     SpriteRenderer render;
+    AudioSource audio;
+    [SerializeField] AudioClip slowAudio, fastAudio;
 
     private void Awake()
     {
+        audio = GetComponent<AudioSource>();
         render = GetComponent<SpriteRenderer>();
     }
 
@@ -17,10 +19,19 @@ public class FrictionActivation : MonoBehaviour
     {
         if (OFriccion1AceleracionLocal == 0)
         {
-            render.sprite = sprites[0];
-        }else
+            audio.clip = slowAudio;
+            GameObject child = transform.GetChild(0).gameObject;
+            child.SetActive(true);
+            GameObject temp = transform.GetChild(2).gameObject;
+            temp.SetActive(false);
+        }
+        else
         {
-            render.sprite = sprites[1];
+            audio.clip = fastAudio;
+            GameObject child = transform.GetChild(1).gameObject;
+            child.SetActive(true);
+            GameObject temp = transform.GetChild(2).gameObject;
+            temp.SetActive(false);
         }
     }
 
@@ -28,6 +39,7 @@ public class FrictionActivation : MonoBehaviour
     {        
         if (collision.CompareTag("Player"))
         {
+            audio.Play();
             WaterFriction friction = collision.GetComponent<WaterFriction>();
             friction.OFriccion1Aceleracion = OFriccion1AceleracionLocal;
             friction.Activate();
