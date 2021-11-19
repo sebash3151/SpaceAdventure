@@ -130,7 +130,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   flecha: {fileID: 8376030824965001492}
   player: {fileID: 0}
-  indiceDesacelere: 0.01
+  indiceDesacelere: 0.001
 --- !u!82 &8376030825159265981
 AudioSource:
   m_ObjectHideFlags: 0

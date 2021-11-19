@@ -6,12 +6,14 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject player;
     public bool preparation = false, playing = false, win = false;
+    [SerializeField] GameObject startHUD;
 
     MyCustomLookAt playerLook;
     Walker walker;
 
     void Start()
     {
+        startHUD.SetActive(true);
         playerLook = player.GetComponent<MyCustomLookAt>();
         walker = player.GetComponent<Walker>();
     }

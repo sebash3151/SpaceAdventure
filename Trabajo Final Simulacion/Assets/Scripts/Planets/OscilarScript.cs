@@ -5,13 +5,13 @@ using UnityEngine;
 public class OscilarScript : MonoBehaviour
 {
     [Header("Valores X")]
-    [SerializeField] [Range(0, 3)] float amplitudX;
-    [SerializeField] [Range(0, 3)] float periodoX;
+    [SerializeField] float amplitudX;
+    [SerializeField] [Range(0, 5)] float periodoX;
     float x;
 
     [Header("Valores Y")]
-    [SerializeField] [Range(0, 3)] float amplitudY;
-    [SerializeField] [Range(0, 3)] float periodoY;
+    [SerializeField] float amplitudY;
+    [SerializeField] [Range(0, 5)] float periodoY;
     float y;
 
     [Header("CheckBoxes")]
@@ -46,7 +46,7 @@ public class OscilarScript : MonoBehaviour
             float factorY = Time.time / periodoY;
             y = amplitudY * Mathf.Sin(2 * Mathf.PI * factorY);
         }
-        transform.position = new Vector3(x + transform.position.x, y + transform.position.y, transform.position.z);
+        transform.position = new Vector3(x, y, transform.position.z); //+ transform.position.x, y + transform.position.y, transform.position.z
     }
 
     private void Aleatorizador()
