@@ -18,8 +18,11 @@ public class OscilarScript : MonoBehaviour
     [SerializeField] bool aleatorizar = false;
     [SerializeField] bool oscilar = false;
 
+    private Vector3 posicionInicial;
+
     private void Start()
     {
+        posicionInicial = transform.position;
         if (aleatorizar)
         {
             Aleatorizador();
@@ -46,7 +49,7 @@ public class OscilarScript : MonoBehaviour
             float factorY = Time.time / periodoY;
             y = amplitudY * Mathf.Sin(2 * Mathf.PI * factorY);
         }
-        transform.position = new Vector3(x, y, transform.position.z); //+ transform.position.x, y + transform.position.y, transform.position.z
+        transform.position = new Vector3(x, y, transform.position.z) + posicionInicial; //+ transform.position.x, y + transform.position.y, transform.position.z
     }
 
     private void Aleatorizador()

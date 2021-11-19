@@ -192,7 +192,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6110896860185931706}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.21, y: 12.45, z: 0}
   m_LocalScale: {x: 0.34900334, y: 0.34900334, z: 0.34900334}
   m_Children:
@@ -613,6 +613,8 @@ MonoBehaviour:
   point: {fileID: 6110896860723590717}
   gravity: {fileID: 6110896859123228881}
   collider: {fileID: 6110896860185931706}
+  walker: {fileID: 0}
+  impulse: {fileID: 0}
 --- !u!1 &6110896860723590706
 GameObject:
   m_ObjectHideFlags: 0

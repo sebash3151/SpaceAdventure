@@ -8,7 +8,7 @@ public class FirstImpulse : MonoBehaviour
     [SerializeField] GameObject flecha;
     [SerializeField] GameObject player;
     [SerializeField] float indiceDesacelere;
-    bool desacelere;
+    public bool desacelere;
     Walker walker;
     Vector2 mousePosition;
     Vector2 thisPosicion;
@@ -27,6 +27,7 @@ public class FirstImpulse : MonoBehaviour
 
     void Update()
     {
+        walker.velocidad.Draw(player.transform.position, Color.black);
         flecha.transform.position = player.transform.position + new Vector3(1f, 1f, 0f);
         if (gameManager.preparation)
         {
@@ -53,8 +54,7 @@ public class FirstImpulse : MonoBehaviour
     {        
         if (!walker.acelerate && !friction.fluidoEnter && !desacelere)
         {
-            impulso = posicionALanzar;
-
+            impulso = Direccion();
             walker.velocidad = impulso;
             desacelere = true;
         }
@@ -68,9 +68,17 @@ public class FirstImpulse : MonoBehaviour
         }
     }
 
+    private Vector2 Direccion()
+    {
+        thisPosicion = player.transform.position;
+        mousePosition = GetWorldMousePosition();
+        Vector2 posicionLanzar = mousePosition - thisPosicion;
+        return posicionLanzar;
+    }
+
     private void Apuntar()
     {
-        thisPosicion = flecha.transform.position;
+        thisPosicion = player.transform.position;
         mousePosition = GetWorldMousePosition();
         posicionALanzar = mousePosition - thisPosicion;
         RotateZ(LookAtOMG(posicionALanzar));

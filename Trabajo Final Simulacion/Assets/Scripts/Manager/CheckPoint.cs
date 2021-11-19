@@ -11,6 +11,8 @@ public class CheckPoint : MonoBehaviour
     private bool aterrizaje;
     [SerializeField] Transform point;
     [SerializeField] GameObject gravity, collider;
+    [SerializeField] Walker walker;
+    [SerializeField] FirstImpulse impulse;
 
     private void Awake()
     {
@@ -21,6 +23,9 @@ public class CheckPoint : MonoBehaviour
     {
         if (collision.CompareTag("Player") && !aterrizaje)
         {
+            impulse.desacelere = false;
+            walker.velocidad = Vector2.zero;
+            walker.aceleracion = Vector2.zero;
             gravity.SetActive(false);
             CircleCollider2D planetCollider = collider.GetComponent<CircleCollider2D>();
             planetCollider.enabled = false;
