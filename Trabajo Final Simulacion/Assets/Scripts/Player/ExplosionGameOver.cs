@@ -47,7 +47,7 @@ public class ExplosionGameOver : MonoBehaviour
         llamas.SetActive(false);
         renderSprite.enabled = false;
         explosion.SetActive(true);
-        walker.velocidad = new Vector2(0, 0);
+        //walker.velocidad = new Vector2(0, 0);
         levelAudio.pitch = 0.7f;
         Sonar();
     }

@@ -2781,7 +2781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   follow: {fileID: 318775075}
   minCamPos: {x: 0, y: 0}
-  maxCamPos: {x: 63.40584, y: 34.09}
+  maxCamPos: {x: 63.40584, y: 35.9}
   smoothtime: 0.1
 --- !u!81 &7321631290941774458
 AudioListener:

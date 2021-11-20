@@ -13,6 +13,7 @@ public class CheckPoint : MonoBehaviour
     [SerializeField] GameObject gravity, collider;
     [SerializeField] Walker walker;
     [SerializeField] FirstImpulse impulse;
+    [SerializeField] bool repetir = false;
 
     private void Awake()
     {
@@ -21,6 +22,10 @@ public class CheckPoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (repetir)
+        {
+            aterrizaje = false;
+        }
         if (collision.CompareTag("Player") && !aterrizaje)
         {
             impulse.desacelere = false;

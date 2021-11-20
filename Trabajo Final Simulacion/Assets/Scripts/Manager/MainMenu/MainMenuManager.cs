@@ -49,7 +49,7 @@ public class MainMenuManager : MonoBehaviour
         Application.Quit();
     }
 
-    private void ChangeScene()
+    public void ChangeScene()
     {
         SceneManager.LoadScene(sceneName);
     }
