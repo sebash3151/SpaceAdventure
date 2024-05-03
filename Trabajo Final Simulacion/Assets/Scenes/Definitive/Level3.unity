@@ -1733,6 +1733,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 31.7
       objectReference: {fileID: 0}
+    - target: {fileID: 7321631290827204433, guid: 8e65a3cc4e5e7024b95955e05b8247dd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321631290827204445, guid: 8e65a3cc4e5e7024b95955e05b8247dd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 454
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321631290827204445, guid: 8e65a3cc4e5e7024b95955e05b8247dd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 246
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321631291213360963, guid: 8e65a3cc4e5e7024b95955e05b8247dd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7321631291213360972, guid: 8e65a3cc4e5e7024b95955e05b8247dd, type: 3}
       propertyPath: cameraSize
       value: 24.9
